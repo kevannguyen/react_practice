@@ -17,18 +17,18 @@
             const IngredientList =
             React.createClass({
                 displayName: 'IngredientList',
+                renderListItem(ingredient, i) {
+                    return React.createElement('li', {key: i}, ingredient);
+                },
                 render() {
                     return React.createElement('ul', {className: 'ingredients'},
-                        ingredients.map((ingredient, i) =>
-                            React.createElement('li', {key: i}, ingredient)
-                        )
+                        this.props.ingredients.map(this.renderListItem)
                     )
                 }
             });
-            const list = React.createElement(IngredientList, null, null);
+            const list = React.createElement(IngredientList, {ingredients}, null);
 
             ReactDOM.render(list, document.getElementById('react-container'));
-
         </script>
     </body>
 </html>
