@@ -15,22 +15,17 @@
         <script>
             const ingredients = ['1 lb Salmon', '1 cup Pine Nuts', '2 cups Butter Lettuce'];
             
-            // creating React classes the ES6 way
-            class IngredientList extends React.Component {
+            // Creating stateless functional component.
+            // A componenent that only relies on its parameters / arguments passed in.
+            // Returns a React element.
+            const ingredientsList = ingredients =>
+                React.createElement('ul', {className: 'ingredients'},
+                    ingredients.map((ingredient, i) =>
+                        React.createElement('li', {key: i}, ingredient)
+                    )
+                );
 
-                renderListItem(ingredient, i) {
-                    return React.createElement('li', {key: i}, ingredient);
-                }
-
-                render() {
-                    return React.createElement('ul', {className: 'ingredients'},
-                        this.props.ingredients.map(this.renderListItem))
-                }
-            }
-
-            var list = React.createElement(IngredientList, {ingredients}, null);
-
-            ReactDOM.render(list, document.getElementById('react-container'));
+            ReactDOM.render(ingredientsList(ingredients), document.getElementById('react-container'));
         </script>
     </body>
 </html>
