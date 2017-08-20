@@ -15,16 +15,16 @@
         <script>
             const ingredients = ['1 lb Salmon', '1 cup Pine Nuts', '2 cups Butter Lettuce'];
             
-            // Creating stateless functional component.
-            // A componenent that only relies on its parameters / arguments passed in.
-            // Returns a React element.
-            const ingredientsList = ingredients =>
-                React.createElement('ul', {className: 'ingredients'},
+            // Using standard React factory methods to create elements...
+            // Easier than calling React.createElement
+            // Ex: React.DOM.li({className: 'ingredient}, ingredient)
+            //     --> same as React.createElement('li', {className: 'ingredient}, ingredient)
+            var ingredientsList = ingredients =>
+                React.DOM.ul({className: 'ingredients'},
                     ingredients.map((ingredient, i) =>
-                        React.createElement('li', {key: i}, ingredient)
-                    )
+                    React.DOM.li({key: i}, ingredient))
                 );
-
+            
             ReactDOM.render(ingredientsList(ingredients), document.getElementById('react-container'));
         </script>
     </body>
